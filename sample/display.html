@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Dota 2 Analytics</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+
+
+</head>
+<body>
+
+<h1>Hero and Kill Count</h1>
+
+<input type="button" id='script' name="scriptbutton" value=" Run Script " onclick="goPython()">
+<script>
+        function goPython(){
+            $.ajax({
+              url: "app.py",
+             context: document.body
+            }).done(function() {
+             alert('finished python script');;
+            });
+        }
+</script>
+
+<img src="https://www.ubuntufree.com/wp-content/uploads/2017/08/Dota-2-Cover-2017.jpg" alt="Dota 2 logo" width="300"
+height="300">
+<ul></ul>
+    <button>Users</button>
+
+<script>
+$("button").click( function() {
+ $.getJSON( "heroKills.json", function(obj) {
+  $.each(obj, function(key, value) {
+         $("ul").append("<li>"+value.name+" has this amount of kills: : "+value.kills+"</li>");
+  });
+ });
+});
+
+</script>
+
+</body>
+</html>
