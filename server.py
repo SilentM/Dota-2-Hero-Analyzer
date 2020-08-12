@@ -1,8 +1,18 @@
 import os
+import secrets
 
-from flask import Flask, render_template, json
+import alert as alert
+from flask import Flask, render_template, json, request, redirect, flash
+
+from dotaScript import DotaScript
 
 app = Flask(__name__)
+
+
+secret = secrets.token_urlsafe(32)
+
+app.secret_key = secret
+
 
 
 # CORS(app)
@@ -13,9 +23,31 @@ app = Flask(__name__)
 #     return render_template('showjson.jade', data=data)
 #
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
 # static/data/test_data.json
+#     filename = os.path.join(app.static_folder, 'data', 'heroKills.json')
+
+    # with open(filename) as test_file:
+    #     data = json.load(test_file)
+
+    if request.method == 'POST':
+        idInputted = request.form['content']
+        dotaScriptInstance = DotaScript()
+
+        try:
+            dotaScriptInstance.runScriptFn(idInputted)
+            return redirect('/heroKills')
+        except:
+            flash("Steam ID: " + str(idInputted) + " not found. Please input valid ID.", 400)
+            return redirect('/')
+    else:
+        return render_template('inputScreen.html')
+
+@app.route('/heroKills')
+def displayHeroKills():
+# static/data/test_data.json
+
     filename = os.path.join(app.static_folder, 'data', 'heroKills.json')
 
     with open(filename) as test_file:
