@@ -5,7 +5,7 @@ import json
 def runScriptFn():
     r = requests.get("https://api.opendota.com/api/players/107828036/matches")
 
-    with open('output.json', 'w') as out:
+    with open('sample/output.json', 'w') as out:
         json.dump(r.json(), out, sort_keys=True, indent='\t')
 
     jsonFile = r.json()
@@ -42,7 +42,7 @@ def runScriptFn():
 
                     arrayHeroKill.append(x)
 
-    with open('templates/heroKills.json', 'w') as json_file:
+    with open('heroKills.json', 'w') as json_file:
         json.dump(arrayHeroKill, json_file)
 
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Dota 2 Analytics</title>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+
+
+</head>
+<body>
+
+<h1>Hero and Kill Count</h1>
+
+<img src="https://www.ubuntufree.com/wp-content/uploads/2017/08/Dota-2-Cover-2017.jpg" alt="Dota 2 logo" width="300"
+height="300">
+
+<ul>
+{% for item in data %}
+    <li>{{item.id}}</li>
+    <li>{{item.kills}}</li>
+    <li>{{item.name}}</li>
+{% endfor %}
+</ul>
+
+
+<!--<form action="/my-link/">-->
+<!--            <input type="submit" value="Click me" />-->
+<!--</form>-->
+<!--<button> <a href="/my-link/">Click me</a></button>-->
+
+
+
+
+
+<!--<ul></ul>-->
+<!--    <button>Users</button>-->
+
+<!--<script>-->
+
+<!--$("button").click( function() {-->
+<!-- $.getJSON("../heroKills.json", function(obj) {-->
+<!--  $.each(obj, function(key, value) {-->
+<!--         $("ul").append("<li>"+value.name+" has this amount of kills: : "+value.kills+"</li>");-->
+<!--  });-->
+<!-- });-->
+<!--});-->
+
+<!--console.log("before")-->
+
+<!--&lt;!&ndash;$.getJSON("/", function(data){&ndash;&gt;-->
+<!--&lt;!&ndash;    console.log("during")&ndash;&gt;-->
+<!--&lt;!&ndash;    console.log(JSON.stringify(data));&ndash;&gt;-->
+<!--&lt;!&ndash;});&ndash;&gt;-->
+
+<!--&lt;!&ndash;console.log('after')&ndash;&gt;-->
+
+<!--</script>-->
+
+</body>
+</html>
