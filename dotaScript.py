@@ -1,6 +1,9 @@
 import requests
 import json
+from jsonmerge import Merger
 
+# sources
+# https://github.com/joshuaduffy/dota2api/blob/master/dota2api/ref/heroes.json
 
 def runScriptFn():
     r = requests.get("https://api.opendota.com/api/players/107828036/matches")
@@ -42,8 +45,26 @@ def runScriptFn():
 
                     arrayHeroKill.append(x)
 
-    with open('heroKills.json', 'w') as json_file:
+    arrayHeroKill.sort(key=lambda x: x["id"], reverse=False)
+
+
+    with open('heroes.json', 'r') as f:
+        heroImages = json.load(f)
+
+    #
+    listOfHeroImages = heroImages["heroes"]
+
+    for arrayHero in arrayHeroKill:
+        for heroImage in listOfHeroImages:
+            if arrayHero["id"] == heroImage["id"]:
+                arrayHero["image"] = heroImage["url_small_portrait"]
+
+    with open('static/data/heroKills.json', 'w') as json_file:
+
         json.dump(arrayHeroKill, json_file)
+
+
+
 
 
 runScriptFn()

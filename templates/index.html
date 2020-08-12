@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Dota 2 Analytics</title>
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
 
 
@@ -16,13 +17,31 @@
 <img src="https://www.ubuntufree.com/wp-content/uploads/2017/08/Dota-2-Cover-2017.jpg" alt="Dota 2 logo" width="300"
 height="300">
 
-<ul>
-{% for item in data %}
-    <li>{{item.id}}</li>
-    <li>{{item.kills}}</li>
-    <li>{{item.name}}</li>
-{% endfor %}
-</ul>
+<!--<ul>-->
+
+<!--{% for item in data %}-->
+<!--    <li>{{item.id}}</li>-->
+<!--    <li>{{item.kills}}</li>-->
+<!--    <li>{{item.name}}</li>-->
+<!--{% endfor %}-->
+<!--</ul>-->
+
+<table>
+    <tr>
+      <th>Hero</th>
+      <th>Hero Name</th>
+      <th>Kills</th>
+    </tr>
+    {% for hero in data %}
+    <tr>
+        <td> <img src="{{ hero['image'] }}" alt="{{ hero['name'] }}" width="120" height="90" /> </td>
+        <td>{{ hero["name"]}}</td>
+      <td>
+          {{ hero["kills"]}}
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
 
 
 <!--<form action="/my-link/">-->
