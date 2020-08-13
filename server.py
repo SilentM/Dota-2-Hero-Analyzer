@@ -3,8 +3,11 @@ import secrets
 
 import alert as alert
 from flask import Flask, render_template, json, request, redirect, flash
+from flask_cors import CORS
 
 from dotaScript import DotaScript
+
+
 
 app = Flask(__name__)
 
@@ -13,9 +16,7 @@ secret = secrets.token_urlsafe(32)
 
 app.secret_key = secret
 
-
-
-# CORS(app)
+CORS(app)
 
 # SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 #     json_url = os.path.join(SITE_ROOT, "static/data", "taiwan.json")

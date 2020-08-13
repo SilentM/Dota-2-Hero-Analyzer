@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <title>Task Master</title>
+    <title>Dota 2 Hero Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
 </head>
 <body>
 <div class="content">
-  <h1 style="text-align: center;">Input Steam User ID</h1>
+  <h1 style="text-align: center;">Analyze Dota 2 Hero Profile</h1>
+  <h2 style="text-align: center;">Input Steam32 ID of User</h2>
+
     {% for mesg in get_flashed_messages() %}
       <h4>{{ mesg }}</h4>
     {% endfor %}
   <div class="form">
     <form action="/" method="POST">
-      <input type="text" name="content" id="content" placeholder="Type Steam User ID Here" value = "{{ data }}" />
+      <input type="text" name="content" id="content" placeholder="Type Steam32 ID Here" />
       <input type="submit" value="Submit"  />
     </form>
   </div>
