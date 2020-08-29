@@ -8,7 +8,7 @@ from dotaScript import DotaScript
 
 app = Flask(__name__)
 
-
+#
 secret = secrets.token_urlsafe(32)
 
 app.secret_key = secret
